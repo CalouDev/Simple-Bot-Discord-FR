@@ -23,8 +23,8 @@ async def pret(): # Défini une commande
 @bot.command()
 async def definition(ctx, mot): # Défini une commande avec comme argument ctx et mot
     url = "https://www.le-dictionnaire.com/definition/{}".format(mot) 
-    response = requests.get(url) # ermet de 'tester' le site
-    if response.ok: # Si la response que l'url renvoi est fonctionnelle
+    reponse = requests.get(url) # ermet de 'tester' le site
+    if reponse.ok: # Si la response que l'url renvoi est fonctionnelle
         s = BeautifulSoup(response.text, 'html.parser')
         trouve = s.find('ul').get_text() # Cherche le texe à l'intérieur des balises 'ul'
         await ctx.send("``` {} ```".format(trouve)) # Renvoi sur le serveur le texte trouvé
